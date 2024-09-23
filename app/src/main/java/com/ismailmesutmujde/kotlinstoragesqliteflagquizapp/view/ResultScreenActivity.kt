@@ -14,6 +14,10 @@ class ResultScreenActivity : AppCompatActivity() {
         val view = bindingResultScreen.root
         setContentView(view)
 
+        val correctCounter = intent.getIntExtra("correctCounter",0)
+        bindingResultScreen.textViewResult.text = "$correctCounter CORRECT ${5-correctCounter} WRONG"
+
+        bindingResultScreen.textViewPercentageResult.text = "${(correctCounter*100)/5}% SUCCESS"
 
         bindingResultScreen.buttonTryAgain.setOnClickListener {
             val intent = Intent(this@ResultScreenActivity, QuizScreenActivity::class.java)
